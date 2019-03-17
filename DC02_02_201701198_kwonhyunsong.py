@@ -42,7 +42,7 @@ def parsing_ip_header(data):
     flags=ip_header[4].hex()
     print("flags:0x",flags)
     flags_int=int(ip_header[4].hex(),16)
-    print(">>>reserved_bit:",(flags_int>>15)&0x0001)
+    print(">>>reserved_bit:",flags_int>>15)
     print(">>>fragments:",(flags_int>>13)& 0x0006)
     print(">>>fragments_offset:",flags_int & 0x1fff)
 
@@ -91,13 +91,13 @@ def parsing_TCP_header(data):
     ack_num=TCP_header[3]
     print("ack_num:",ack_num)
 
-    header_len=(int(TCP_header[4].hex(),16)>>12)&0xf
+    header_len=(int(TCP_header[4].hex(),16)>>12)&0x000f
     print("header_len:",header_len)
 
     flags=int(TCP_header[4].hex(),16)&0x0fff
     print("flags:",flags)
 
-    reserved=(flags>>9)&0x007
+    reserved=flags>>9
     print(">>>reserved",reserved)
 
     nonce=(flags>>8)&0x001
