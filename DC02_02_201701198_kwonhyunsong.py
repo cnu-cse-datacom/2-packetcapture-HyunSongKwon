@@ -43,7 +43,7 @@ def parsing_ip_header(data):
     print("flags:0x",flags)
     flags_int=int(ip_header[4].hex(),16)
     print(">>>reserved_bit:",flags_int>>15)
-    print(">>>fragments:",(flags_int>>13)& 0x0006)
+    print(">>>fragments:",(flags_int>>13)& 0x0001)
     print(">>>fragments_offset:",flags_int & 0x1fff)
 
 
